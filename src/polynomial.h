@@ -20,7 +20,7 @@ public:
     }
 
     std::stable_sort(_terms.begin(),_terms.end(),mycom);
-    _degree = degree;
+    _degree = _terms.at(0).exponent();
     
   }
 
