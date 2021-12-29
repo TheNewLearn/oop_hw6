@@ -68,27 +68,36 @@ public:
         int sum = term(i).coefficient() + q.term(i).coefficient();
         if(sum != 0){
           addpoly.push_back(Term(sum,term(i).exponent()));
+          if(min < term(i).exponent()){
+            min = term(i).exponent();
+          }
         }
         
       }
-      return Polynomial(addpoly,a);
+      return Polynomial(addpoly,min);
     }else if(a > b){
       for(int i=0; i<= _terms.at(0).exponent();i++){
         int sum = term(i).coefficient() + q.term(i).coefficient();
         if(sum != 0){
           addpoly.push_back(Term(sum,term(i).exponent()));
+          if(min < term(i).exponent()){
+            min = term(i).exponent();
+          }
         }
       }
-      return Polynomial(addpoly,a);
+      return Polynomial(addpoly,min);
     }
     else if(b > a){
       for(int i=0; i<= q._terms.at(0).exponent();i++){
         int sum = term(i).coefficient() + q.term(i).coefficient();
         if(sum != 0){
           addpoly.push_back(Term(sum,term(i).exponent()));
+          if(min < term(i).exponent()){
+            min = term(i).exponent();
+          }
         }
       }
-      return Polynomial(addpoly,b);
+      return Polynomial(addpoly,min);
     }
     
   }
