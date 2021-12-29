@@ -1,5 +1,4 @@
 #include <gtest/gtest.h>
-
 #include "../src/term.h"
 
 class TermTest : public ::testing::Test {
