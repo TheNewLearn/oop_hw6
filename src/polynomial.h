@@ -8,7 +8,13 @@ class Polynomial {
 public:
   Polynomial(std::vector<Term> terms, int degree) {
     for(int i=0 ; i< terms.size(); i++){
-      if(std::count(terms.begin(),terms.end(),terms.at(i)) > 1){
+      int count = 0;
+      for(int j=0; j< terms.size(); j++){
+        if(terms.at(i).exponent() == terms.at(j).exponent()){
+          count += 1;
+        }
+      }
+      if(count > 1){
         throw std::string("duplicate terms");
       }
     }
@@ -20,7 +26,7 @@ public:
     }
 
     std::stable_sort(_terms.begin(),_terms.end(),mycom);
-    _degree = _terms.at(0).exponent();
+    _degree = degree;
     
   }
 
