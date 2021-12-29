@@ -57,29 +57,28 @@ public:
   // add two polynomials
   Polynomial operator+ (const Polynomial & q) const {
     std::vector<Term> addpoly;
-    if(_terms.at(0).exponent() == q._terms.at(0).exponent()){
-      for(int i=0; i< _terms.size();i++){
-        int a = _terms.at(i).coefficient();
-        int b = q._terms.at(i).coefficient();
-        addpoly.push_back(Term(a+b,_terms.at(i).exponent()));
+    int min = 0;
+    int a = _terms.at(0).exponent();
+    int b = q._terms.at(0).exponent();
+    if(a==b){
+      for(int i=0; i<= _terms.at(0).exponent();i++){
+        int sum = term(i).coefficient() + q.term(i).coefficient();
+        addpoly.push_back(Term(sum,term(i).exponent()));
       }
-      return Polynomial(addpoly,_terms.at(0).exponent());
+      return Polynomial(addpoly,a);
+    }else if(a > b){
+      for(int i=0; i<= _terms.at(0).exponent();i++){
+        int sum = term(i).coefficient() + q.term(i).coefficient();
+        addpoly.push_back(Term(sum,term(i).exponent()));
+      }
+      return Polynomial(addpoly,a);
     }
-    else if(_terms.at(0).exponent() > q._terms.at(0).exponent()){
-      for(int i=0; i< _terms.size();i++){
-        int a = _terms.at(i).coefficient();
-        int b = q._terms.at(i).coefficient();
-        addpoly.push_back(Term(a+b,_terms.at(0).exponent()));
+    else if(b > a){
+      for(int i=0; i<= q._terms.at(0).exponent();i++){
+        int sum = term(i).coefficient() + q.term(i).coefficient();
+        addpoly.push_back(Term(sum,term(i).exponent()));
       }
-       return Polynomial(addpoly,_terms.at(0).exponent());
-    }
-    else if(_terms.at(0).exponent() < q._terms.at(0).exponent()){
-      for(int i=0; i< q._terms.size();i++){
-        int a = _terms.at(i).coefficient();
-        int b = q._terms.at(i).coefficient();
-        addpoly.push_back(Term(a+b,q._terms.at(0).exponent()));
-      }
-      return Polynomial(addpoly,q._terms.at(0).exponent());
+      return Polynomial(addpoly,b);
     }
     
   }
