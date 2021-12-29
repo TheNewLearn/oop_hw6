@@ -107,8 +107,8 @@ public:
     std::vector<Term> mulityp;
     int min = 0;
     for(int i=0; i< _terms.size();i++){
-      int a = _terms.at(i).coefficient();
-      int b = t.coefficient();
+      double a = _terms.at(i).coefficient();
+      double b = t.coefficient();
       mulityp.push_back(Term(a*b, (int)(_terms.at(i).exponent() + t.exponent())));
       if(min < _terms.at(i).exponent() + t.exponent() ){
         min = _terms.at(i).exponent() + t.exponent();
