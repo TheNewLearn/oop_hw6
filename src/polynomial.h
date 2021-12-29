@@ -65,7 +65,7 @@ public:
     int b = sorted.at(0).exponent();
     if(a==b){
       for(int i=0; i<= _terms.at(0).exponent();i++){
-        int sum = term(i).coefficient() + q.term(i).coefficient();
+        double sum = term(i).coefficient() + q.term(i).coefficient();
         if(sum != 0){
           addpoly.push_back(Term(sum,term(i).exponent()));
           if(min < term(i).exponent()){
@@ -77,7 +77,7 @@ public:
       return Polynomial(addpoly,min);
     }else if(a > b){
       for(int i=0; i<= _terms.at(0).exponent();i++){
-        int sum = term(i).coefficient() + q.term(i).coefficient();
+        double sum = term(i).coefficient() + q.term(i).coefficient();
         if(sum != 0){
           addpoly.push_back(Term(sum,term(i).exponent()));
           if(min < term(i).exponent()){
@@ -89,7 +89,7 @@ public:
     }
     else if(b > a){
       for(int i=0; i<= q._terms.at(0).exponent();i++){
-        int sum = term(i).coefficient() + q.term(i).coefficient();
+        double sum = term(i).coefficient() + q.term(i).coefficient();
         if(sum != 0){
           addpoly.push_back(Term(sum,term(i).exponent()));
           if(min < term(i).exponent()){
@@ -124,13 +124,13 @@ public:
     for(int i=0 ; i< q._terms.size();i++){
       for(int j=0 ; j< _terms.size();j++){
         if(i == 0){
-          int a = q._terms.at(i).coefficient();
-          int b = _terms.at(j).coefficient();
+          double a = q._terms.at(i).coefficient();
+          double b = _terms.at(j).coefficient();
           mulityp.push_back(Term(a*b,q._terms.at(i).exponent() + _terms.at(j).exponent() ));
         }
         else{
-          int a = q._terms.at(i).coefficient();
-          int b = _terms.at(j).coefficient();
+          double a = q._terms.at(i).coefficient();
+          double b = _terms.at(j).coefficient();
           
           int c = q._terms.at(i).exponent() + _terms.at(j).exponent();
           bool finded = false;
