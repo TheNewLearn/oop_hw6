@@ -67,17 +67,17 @@ public:
     }
     else if(_terms.at(0).exponent() > q._terms.at(0).exponent()){
       for(int i=0; i< _terms.size();i++){
-        int a = term(i).coefficient();
-        int b = q.term(i).coefficient();
-        addpoly.push_back(Term(a+b,term(i).exponent()));
+        int a = _terms.at(i).coefficient();
+        int b = q._terms.at(i).coefficient();
+        addpoly.push_back(Term(a+b,_terms.at(0).exponent()));
       }
        return Polynomial(addpoly,_terms.at(0).exponent());
     }
     else if(_terms.at(0).exponent() < q._terms.at(0).exponent()){
       for(int i=0; i< q._terms.size();i++){
-        int a = term(i).coefficient();
-        int b = q.term(i).coefficient();
-        addpoly.push_back(Term(a+b,q.term(i).exponent()));
+        int a = _terms.at(i).coefficient();
+        int b = q._terms.at(i).coefficient();
+        addpoly.push_back(Term(a+b,q._terms.at(0).exponent()));
       }
       return Polynomial(addpoly,q._terms.at(0).exponent());
     }
