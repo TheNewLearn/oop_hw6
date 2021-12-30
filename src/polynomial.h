@@ -156,7 +156,7 @@ public:
 
   }
 
-public:
+private:
   std::vector<Term> _terms;
   int _degree;
 
